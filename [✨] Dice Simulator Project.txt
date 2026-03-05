@@ -1,0 +1,93 @@
+# 28th of February Saturday 2026
+
+# texts
+info = "Dice Simulator!! by body_pl"
+line = "------------------------"
+info2 = "what does this game includes?"
+info3 = "1- dice number that pc randomly generates."
+info4 = "2- dice types kind as odd/even."
+info5 = "3- total count of your spin amount."
+info6 = "4- achievement system based on your spin amount. (max 100)"
+info7 = "5- achievement page so you can see your active achievements any time."
+achinfo = "type M to visit achievements page!"
+warning = "your spin amount and achievements resets once you quit!!"
+
+# print process
+print(info)
+print(line)
+print(info2)
+print(info3)
+print(info4)
+print(info5)
+print(info6)
+print(info7)
+print(line)
+print(warning)
+print(line)
+print(achinfo)
+print(line)
+
+# stuff
+import random # packet to generate random numbers
+dice_faces = ["1 [.]", "2 [:]", "3 [:.]", "4 [::]", "5 [::.]", "6 [:::]"]
+count = 0 # dice counting starts at zero every time
+
+# spin process
+while True:
+    ask = input("spin the dice? (Y/n): ")
+    
+    if ask == "Y":
+        dice = random.choice(dice_faces) # get the dice number
+        count += 1 # spin counting
+        print("result:", dice)
+        dice_number = int(dice[0])
+        if dice_number % 2 == 0:
+            print("type: even number")
+        else:
+            print("type: odd number")
+        print("total spins:", count)
+        print(line)
+        if count == 100: # activates the achievement system depends on count amount
+            print("achievement unlocked: gambling is life!")
+        elif count == 75:
+            print("achievement unlocked: cannot quit now")
+        elif count == 50:
+            print("achievement unlocked: getting addicted into it")
+        elif count == 25:
+            print("achievement unlocked: got into gambling")
+        elif count == 10:
+            print("achievement unlocked: baby steps")
+        else:
+            continue
+        print(line)
+    elif ask == "n":
+        print("gambling is over!")
+        print("total spin amount this round:", count)
+        break
+    elif ask == "M":
+        print("Achievements:")
+        if count >= 100:
+            print("gambling is life! (100)")
+            print("cannot quit now (75)")
+            print("getting addicted into it (50)")
+            print("got into gambling (25)")
+            print("baby steps (10)")
+        elif count >= 75:
+            print("cannot quit now (75)")
+            print("getting addicted into it (50)")
+            print("got into gambling (25)")
+            print("baby steps (10)")
+        elif count >= 50:
+            print("getting addicted into it (50)")
+            print("got into gambling (25)")
+            print("baby steps (10)")
+        elif count >= 25:
+            print("got into gambling (25)")
+            print("baby steps (10)")
+        elif count >= 10:
+            print("baby steps (10)")
+        else:
+            print("cannot find any achievement")
+    else:
+        print("wrong request")
+        break
